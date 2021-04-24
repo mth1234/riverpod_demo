@@ -41,7 +41,51 @@ class MyHomePage extends HookWidget {
 
     return Scaffold(
       body: Center(
-        child: Text('$count'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('$count'),
+            ElevatedButton(
+              onPressed: () async {
+                var result = await showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                          title: Center(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text('画像'),
+                                Icon(Icons.image),
+                              ],
+                            ),
+                          ),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: Center(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text('文章'),
+                                Icon(Icons.add),
+                              ],
+                            ),
+                          ),
+                          onTap: () {},
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: const Text('show'),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
